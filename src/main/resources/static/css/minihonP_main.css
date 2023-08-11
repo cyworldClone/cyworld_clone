@@ -1,0 +1,322 @@
+/*font-family: 'Kanit', sans-serif;*/ 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@font-face {
+    font-family: 'NeoDunggeunmo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+button{
+    border: 0;
+    background-color: unset;
+}
+
+.mainWrap {
+    background-color: antiquewhite;
+    width: 1200px;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    display: flex;
+}
+
+.hompWrap {
+    /* border: 2px dotted white;*/
+    width: 920px;
+    height: 640px;
+    position: absolute;
+    top: 50px;
+    left: 50px; 
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='white' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 10px;
+}
+
+.profile {
+    background-color: #50abc6;
+    width: 22%;
+    height: 100%;
+    border-radius: 10px;
+}
+.profile .line {
+    width: 85%;
+    height: 88.5%;
+    float: right;
+    background-color: white;
+    border: 2px solid black;
+    border-right: none;
+    border-radius: 10px;
+    margin-top: 38px;
+    text-align: center;
+}
+.profile .visitors {
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+.profile .visitors span {
+    color: red;
+}
+.profile .line .wrap {
+    width: 93%;
+    height: 90%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 0 auto;
+    position: relative;
+}
+.profile .line .wrap>div {
+    width: 170px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+.profile .line .wrap .photo {
+    height: 150px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.profile .line .photo img {
+    width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.profile .line .wrap .mood {
+    height: 30px;
+    margin-top: 20px;
+    line-height: 30px;
+    color: #50abc6;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+}
+.profile .line .wrap .mood span {
+    color: black;
+}
+.profile .line .wrap .contents {
+    font-family: 'Kanit', sans-serif;
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 13px;
+    text-align: left;
+}
+.profile .line .wrap .history {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted #5b5b5b;
+}
+.profile .line .wrap .history .right {
+    color: #5b5b5b;
+}
+.profile .line .wrap .name {
+    font-family: 'NeoDunggeunmo';
+    text-align: left;
+    font-size: 16px;
+    color: #2f2e4d;
+    margin: 25px auto;
+}
+.profile .line .wrap .ilchonList {
+    position: relative;
+    width: 170px;
+    height: 57px;
+}
+.profile .line .wrap .ilchonList .tag {
+    width: 50px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid #5b5b5b;
+    line-height: 25px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    border-bottom: none;
+}
+.profile .line .wrap .ilchonList .list {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #5b5b5b;
+    line-height: 30px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-top-left-radius: 0;
+}
+.profile .line .wrap .ilchonList .list select {
+    width: 98%;
+}
+
+.homp {
+    background-color: #50abc6;
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+}
+.homp .line {
+    width: 94%;
+    height: 88.5%;
+    float: left;
+    background-color: white;
+    border: 2px solid black;
+    border-left: none;
+    border-radius: 10px;
+    margin-top: 38px;
+    position: relative;
+}
+.homp .line .titleWrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    width: 93%;
+    margin-left: 20px;
+}
+.homp .line .titleWrap .title {
+    color: #50abc6;
+    font-weight: bold;
+    font-size: 18px;
+    width: 370px;
+}
+.homp .line .titleWrap button {
+    background-color: #cdcdcd;
+    border-radius: 3px;
+    font-size: 12px;
+    color: white;
+    margin-top: 6px;
+}
+.homp .line .titleWrap .url {
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.homp .line .wrap {
+    width: 98.4%;
+    height: 90%;
+    border: 2px solid black;
+    border-radius: 10px;
+    float: left;
+    position: absolute;
+    background-color: white;
+    z-index: 100;
+}
+.homp .line .wrap .scroll {
+    width: 90%;
+    height: 95%;
+    margin: 0 auto;
+    margin-top: 13px;
+    overflow: auto;
+    font-size: 14px;
+}
+
+.homp .line .wrap .scroll .topWrap {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+.homp .line .wrap .scroll .topWrap > * {
+    width: 49%;
+}
+.homp .line .wrap .scroll h3 {
+    padding-left: 5px;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+    border-bottom: 1px dotted #5b5b5b;
+    color: #50abc6;
+}
+.homp .line .wrap .scroll h3:first-child {
+    width: 49%;
+}
+.homp .line .wrap .scroll .newPost li {
+    margin-bottom: 3px;
+    padding-left: 10px;
+}
+.homp .line .wrap .scroll .newPost li::before {
+    content: "•";
+    margin-right: 8px;
+    color: #cdcdcd;
+}
+.homp .line .wrap .scroll .board {
+    border-collapse: collapse;
+}
+.homp .line .wrap .scroll .board td {
+    width: 50%;
+    border: 1px solid #cdcdcd;
+    height: 33.33%;
+    padding-left: 10px;
+}
+.homp .line .wrap .scroll .miniroom {
+    margin: 15px auto;
+}
+.homp .line .wrap .scroll .miniroom img {
+    width: 100%;
+}
+.homp .line .wrap .scroll h4 {
+    padding-left: 5px;
+}
+.homp .line .wrap .scroll .ilchonReply li {
+    border-bottom: 1px solid #cdcdcd;
+    height: 28px;
+    padding-left: 10px;
+    line-height: 28px;
+}
+.homp .line .wrap .scroll .ilchonReply li::before {
+    content: "•";
+    margin-right: 5px;
+    color: #cdcdcd;
+}
+
+
+.homp .tap {
+    width: 75px;
+    position: absolute;
+    top: 65px;
+    right: -66px;
+    text-align: center;
+}
+.homp .tap div {
+    width: 75px;
+    height: 35px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 2px solid black;
+    background-color: #50abc6;
+    margin-bottom: 2px;
+    color: white;
+    font-family: 'NeoDunggeunmo';
+    line-height: 35px;
+}
+.homp .tap div a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.homp .tap div:first-child {
+    position: absolute;
+    z-index: 1000;
+    border-left: none;
+    padding-left: 2px;
+    background-color: white;
+    color: black;
+}
