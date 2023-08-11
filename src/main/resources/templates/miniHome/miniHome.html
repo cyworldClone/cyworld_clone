@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>파일업로드</title>
+<link href="/css/default.css" rel="stylesheet">
+</head>
+<body>
+	<div id="container">
+
+		<form action="upload" method="post" th:object="${photoForm}" enctype="multipart/form-data">
+			<h1>파일업로드</h1>
+			<table>
+				<tr>
+					<th>제목</th>
+					<td><input type="text" th:field="*{title}">
+					</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><input type="text" th:field="*{contents}">
+					</td>
+				</tr>
+				<tr>
+					<th>파일</th>
+					<td><input type="file" multiple="multiple" th:field="*{photo}">
+					</td>
+				</tr>
+			</table>
+			<p>
+			<div class="center">
+				<input type="submit" value="등록" /> <input
+					onclick="location.href='/'" type="button" value="메인으로">
+			</div>
+		</form>
+	</div>
+</body>
+</html>
