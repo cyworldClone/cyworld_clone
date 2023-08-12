@@ -9,16 +9,18 @@
             member_id,
             password,
             name,
-            dotori,
             nickname,
-            homp_title
+            homp_title,
+            homp_explanation,
+            profile_img
         ) values (
             #{member_id},
             #{password},
             #{name},
-            0, 
             #{nickname},
-            '제목없음'
+            #{homp_title},
+            #{homp_explanation},
+            #{profile_img}
         )
     </insert>
 
@@ -28,5 +30,16 @@
         	*
          from member where member_id = #{member_id}
     </select>
+    
+    <!-- 프로필 수정 -->
+    <update id="updateMember">
+    	update member
+		<set>
+			homp_title = #{homp_title},
+			homp_explanation = #{homp_explanation},
+			profile_img = #{profile_img}
+		</set>
+		where member_id = #{member_id}
+    </update>
     
 </mapper>

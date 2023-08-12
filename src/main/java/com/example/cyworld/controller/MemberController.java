@@ -64,7 +64,9 @@ public class MemberController {
             log.info("bindingResult: {}", bindingResult);
             return "member/joinForm";
         }
-
+        
+        member = JoinMemberForm.toMember(joinForm);
+        
         // 회원정보를 저장한다.
         memberService.saveMember(JoinMemberForm.toMember(joinForm));
 

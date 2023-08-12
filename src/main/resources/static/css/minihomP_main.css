@@ -90,11 +90,27 @@ button{
     margin-top: 20px;
     overflow: hidden;
     border-radius: 10px;
+    position: relative;
 }
 .profile .line .photo img {
     width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+.profile .line .photo .fileBtn {
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: white;
+	transform: translate(-50%, -50%);
+}
+.profile .line .photo input, .second {
+	display: none;
 }
 .profile .line .wrap .mood {
     height: 30px;

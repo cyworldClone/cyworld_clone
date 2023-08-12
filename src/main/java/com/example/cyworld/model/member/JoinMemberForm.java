@@ -19,14 +19,12 @@ public class JoinMemberForm {
     private String password;
     @NotBlank
     private String name;
-    
     private GenderType gender;
-    @NotNull @Past @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birth;
-    private String email;
     private Long dotori;
     private String nickname;
     private String homp_title;
+    private String homp_explanation;
+    private String profile_img;
     
     public static Member toMember(JoinMemberForm joinMemberForm) {
         Member member = new Member();
@@ -34,11 +32,8 @@ public class JoinMemberForm {
         member.setPassword(joinMemberForm.getPassword());
         member.setName(joinMemberForm.getName());
         member.setGender(joinMemberForm.getGender());
-        member.setBirth(joinMemberForm.getBirth());
-        member.setEmail(joinMemberForm.getEmail());
         member.setNickname(joinMemberForm.getNickname());
-        member.setDotori(joinMemberForm.getDotori());
-        member.setHomp_title(joinMemberForm.getHomp_title());
+        
         return member;
     }
 }
