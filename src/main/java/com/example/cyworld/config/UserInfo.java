@@ -24,7 +24,7 @@ public class UserInfo implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// 사용자의 권한을 리턴
 		Collection<GrantedAuthority> collect = new ArrayList<>();
-		collect.add(new SimpleGrantedAuthority(member.getRole().name())); // .name(): 이넘 타입을 스트링으로 바꿔줌
+//		collect.add(new SimpleGrantedAuthority(member.getRole().name())); // .name(): 이넘 타입을 스트링으로 바꿔줌
 		return collect;
 	}
 

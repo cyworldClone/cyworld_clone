@@ -8,12 +8,16 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.example.cyworld.model.AttachedImg;
 
+import com.example.cyworld.model.AttachedFile;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class FileService {
-    @Value("${uploadPath}")
-    private String uploadPath;
+    @Value("${file.upload.path}")
+    private String uploadPath;	// 파일 경로를 저장할 변수
 
     /**
      * 업로드 된 파일을 지정된 경로에 저장하고, 저장된 파일명을 리턴
@@ -21,7 +25,7 @@ public class FileService {
      * @param path 저장한 경로
      * @return 저장된 파일명
      */
-    public AttachedImg saveFile(MultipartFile mfile) {
+    public AttachedFile saveFile(MultipartFile mfile) {
         // 업로드 된 파일이 없거나 크기가 0이면 저장하지 않고 null을 리턴
         if (mfile == null || mfile.isEmpty() || mfile.getSize() == 0) {
             return null;
@@ -39,6 +43,7 @@ public class FileService {
         // 저장할 파일명을 오늘 날짜의 년월일로 생성
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String savedFilename = sdf.format(new Date());
+        savedFilename = savedFilename + new Date().getTime();
 
         // 원본 파일의 확장자
         String ext;
@@ -48,7 +53,7 @@ public class FileService {
         if (lastIndex == -1) {
             ext = "";
         }
-
+        
         // 확장자가 있는 경우
         else {
             ext = "." + originalFilename.substring(lastIndex + 1);
@@ -69,12 +74,13 @@ public class FileService {
         // 파일 저장
         try {
             mfile.transferTo(serverFile);
+            log.info("mfile: {}", mfile);
         } catch (Exception e) {
             savedFilename = null;
             e.printStackTrace();
         }
 
-        return new AttachedImg(originalFilename, savedFilename + ext, mfile.getSize());
+        return new AttachedFile(originalFilename, savedFilename + ext, mfile.getSize());
     }
 
     /**

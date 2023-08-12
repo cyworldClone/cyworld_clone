@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.cyworld.model.AttachedFile;
 import com.example.cyworld.model.AttachedImg;
 import com.example.cyworld.model.post.Post;
 import com.example.cyworld.repository.PostMapper;
@@ -55,7 +56,7 @@ public class PostService {
     	postMapper.savePost(post);
         // 파일을 저장한다.
         if (file != null && file.getSize() > 0) {
-        	AttachedImg attachedImg = fileService.saveFile(file);
+        	AttachedFile attachedImg = fileService.saveFile(file);
         	//attachedImg.setReview_id(post.getReview_id());
         	//postMapper.saveImg(attachedImg);
         }

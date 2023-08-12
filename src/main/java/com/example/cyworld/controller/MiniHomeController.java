@@ -2,11 +2,15 @@ package com.example.cyworld.controller;
 
 import com.example.cyworld.config.PrincipalDetails;
 import com.example.cyworld.config.UserInfo;
+import com.example.cyworld.model.AttachedFile;
+import com.example.cyworld.model.AttachedImg;
+import com.example.cyworld.model.member.Member;
 import com.example.cyworld.model.post.PhotoUpdateForm;
 import com.example.cyworld.model.post.Post;
 import com.example.cyworld.repository.MemberRepository;
 import com.example.cyworld.service.MemberService;
 import com.example.cyworld.service.PostService;
+import com.example.cyworld.util.FileService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,26 +40,57 @@ import javax.servlet.http.HttpSession;
 public class MiniHomeController {
 
     private final PostService postService;
-    private  PhotoUpdateForm photoUpdateForm;
+    
+    private final MemberService memberService;
   
+    @Autowired
+	private FileService fileService;
     
     @GetMapping("myhomp")
-	public String minihonP(@AuthenticationPrincipal PrincipalDetails userInfo, Model model) {
-		model.addAttribute("loginUser", userInfo);
-		return "minihomP/minihonP_main";
+	public String minihomP(@AuthenticationPrincipal PrincipalDetails userInfo, Model model) {
+    	Member member = userInfo.getMember();
+		model.addAttribute("member", member);
+		log.info("member: {}", member);
+		return "minihomP/minihomP_main";
 	}
     
+    @GetMapping("update")
+    public String hompUpload(@AuthenticationPrincipal PrincipalDetails userInfo, Model model) {
+    	Member member = userInfo.getMember();
+//    	log.info("member: {}", member);
+    	model.addAttribute("member", member);
+    	return "minihomP/minihomP_main_update";
+    }
+    
+    @Transactional(readOnly = true)
+    @PostMapping("update")
+    public String hompSave(@AuthenticationPrincipal PrincipalDetails userInfo, @RequestParam(required = false) String explanation, @RequestParam(required = false) MultipartFile file) {
+//    	log.info("img: {}", file);
+//    	log.info("explanation: {}", explanation);
+    	if (explanation != null) {
+    		userInfo.getMember().setHomp_explanation(explanation);
+    	}
+    	if (file != null && !file.isEmpty()) {
+            AttachedFile saveFile = fileService.saveFile(file);
+            String fullPath = "/uploadImg/" + saveFile.getSaved_filename();
+//            customer.setCustomer_img(fullPath);
+            userInfo.getMember().setProfile_img(fullPath);
+         }
+    	memberService.updateMember(userInfo);
+    	return "redirect:/miniHome/myhomp";
+    }
+    
+    
+    
     @GetMapping("upload")
-    public String miniHome(
-    					   Model model) {
+    public String miniHome(Model model) {
     	model.addAttribute("photoForm", new PhotoUpdateForm());
         return "miniHome/upload";
     }
     
     
     @PostMapping("upload")
-    public String write(
-              @Validated @ModelAttribute(name="photoForm") PhotoUpdateForm photoUpdateForm,
+    public String write(@Validated @ModelAttribute(name="photoForm") PhotoUpdateForm photoUpdateForm,
               BindingResult result,
             @RequestParam(name = "photo", required = false) MultipartFile file
             ){
@@ -63,7 +98,6 @@ public class MiniHomeController {
         // 파라미터로 받은 BoardWriteForm 객체를 Board 타입으로 변환한다.
         Post post = PhotoUpdateForm.toPost(photoUpdateForm);
         
-        log.info("안녕3");
         log.info("post:{}",post);
         // board 객체를 저장한다.
         

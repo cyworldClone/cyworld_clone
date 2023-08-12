@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/minihonP_main.css">
+    <link rel="stylesheet" href="/css/minihomP_main.css">
     <script src="https://kit.fontawesome.com/d1fa9340d9.js"	crossorigin="anonymous"></script>
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>cyworld</title>
 </head>
 
 <body>
-    <div class="mainWrap">
+    <div class="mainWrap" th:object="${member}">
         <div class="hompWrap"></div>
 
         <!--980*700-->
@@ -23,13 +23,13 @@
                 </div><!--visitors-->
                 <div class="wrap">
                     <div class="photo">
-                        <img src="/img/basic image.jpg" alt="profile basic image">
+                        <img th:src="*{profile_img}" alt="profile basic image">
                     </div>
                     <div class="mood">TODAY IS...&nbsp;&nbsp;<span>슬픔</span></div>
-                    <div class="contents">프로필 소개입니다</div>
+                    <div class="contents"><p th:text="*{homp_explanation}"></p></div>
                     <div class="history">
                         <div class="left">
-                            <i class="fa-solid fa-caret-right" style="color: #f5ae14;"></i> <a href="#">EDIT</a>
+                            <i class="fa-solid fa-caret-right" style="color: #f5ae14;"></i> <a href="update">EDIT</a>
                             <i class="fa-solid fa-caret-right" style="color: #f5ae14;"></i> HISTORY
                         </div>
                         <div class="right">
@@ -37,7 +37,7 @@
                             <i class="fa-solid fa-caret-up"></i>
                         </div>
                     </div><!--history-->
-                    <div class="name">샤갈</div>
+                    <div class="name"><p th:text="*{name}"></p></div>
                     <div class="ilchonList">
                         <div class="tag">일촌</div>
                         <div class="list">
@@ -57,10 +57,10 @@
             <div class="line">
                 <div class="titleWrap">
                     <div class="title">
-                        이형빈님의 미니홈피
+                        <span th:text="*{homp_title}"></span>
                     </div>
                     <div class="update"><button>수정</button></div>
-                    <div class="url"><a href="#">https://www.cyworld.com/lhb_babo</a></div>
+                    <div class="url"><a href="#">https://www.cyworld.com/[[*{member_id}]]</a></div>
                 </div><!--titleWrap-->
                 <div class="wrap">
                     <div class="scroll">
