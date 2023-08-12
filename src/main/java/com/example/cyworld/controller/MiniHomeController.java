@@ -38,12 +38,18 @@ public class MiniHomeController {
     private final PostService postService;
     private  PhotoUpdateForm photoUpdateForm;
   
-    @GetMapping("miniHome")
+    
+    @GetMapping("myhomp")
+	public String minihonP(@AuthenticationPrincipal PrincipalDetails userInfo, Model model) {
+		model.addAttribute("loginUser", userInfo);
+		return "minihomP/minihonP_main";
+	}
+    
+    @GetMapping("upload")
     public String miniHome(
     					   Model model) {
-    	log.info("안녕");
     	model.addAttribute("photoForm", new PhotoUpdateForm());
-        return "miniHome/miniHome";
+        return "miniHome/upload";
     }
     
     

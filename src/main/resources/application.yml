@@ -8,8 +8,8 @@ server:
       max-request-size=100MB
 
 
-uploadPath: jdbc:oracle:thin:@cyworld_high?TNS_ADMIN=./src/main/resources/Wallet_cyworld/
-   
+uploadPath: file:///adb.ap-chuncheon-1.oraclecloud.com:1522/g39bf842bb8a33a_cyworld_high.adb.oraclecloud.com/
+
     
 spring:
   datasource:
