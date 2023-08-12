@@ -72,5 +72,14 @@ public class MiniHomeController {
         // board/list 로 리다이렉트한다.
         return "redirect:/";
     }
+    
+    @GetMapping("lee")
+    public String lee(Model model) {
+        return "miniHome/lee";
+    }
+    @GetMapping("dotori")
+    public String dotori(Model model) {
+        return "miniHome/dotori";
+    }
 
 }

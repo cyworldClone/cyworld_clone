@@ -11,4 +11,7 @@ public interface MemberRepository {
 
     // 아이디로 회원정보 검색
     Member findMemberById(String member_id);
+    
+    void updateMember(Member updateMember);
+
 }

@@ -35,4 +35,9 @@ public class MemberService {
 		memberRepository.saveMember(member);
 	}
 	
+	
+	public  void updateMember(Member updateMember) {
+		memberRepository.updateMember(updateMember);
+	}
+
 }

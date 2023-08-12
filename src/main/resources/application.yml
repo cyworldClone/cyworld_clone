@@ -24,11 +24,7 @@ spring:
 #    password: root
   profiles:
     include: oauth
-  devtools:
-    livereload:
-      enabled: true
-  thymeleaf:
-    cache: true
+  
     
     
 mybatis:

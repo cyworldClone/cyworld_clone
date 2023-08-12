@@ -29,4 +29,14 @@
          from member where member_id = #{member_id}
     </select>
     
+    
+        <!--  맴버 (도토리) 수정  -->
+     <update id="updateMember">
+        update member
+        <set>
+            <if test="dotori != null">dotori = #{dotori},</if>
+             <if test="name != null">name = #{name},</if> 
+        </set>
+        where member_id = #{member_id}
+    </update>
 </mapper>

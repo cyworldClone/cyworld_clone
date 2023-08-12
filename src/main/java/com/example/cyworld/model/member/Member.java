@@ -3,6 +3,7 @@ package com.example.cyworld.model.member;
 import java.time.LocalDate;
 
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +18,7 @@ public class Member {
     private String email;
     private RoleType role;
     private String provider;
-    private Long dotori;
+    private Long dotori=0L;
     private String nickname;
     private String homp_title;
     

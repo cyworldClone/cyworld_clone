@@ -76,7 +76,9 @@ public class PrincipalOAuthUserService extends DefaultOAuth2UserService{
 			//자동 회원가입
 			memberRepository.saveMember(member);
 		}
+		//PrincipalDetails 정보를 최신화 하기 위해 다시 findMember해서 Principal에 집어넣기(member 넣으면 회원가입이미된 아이디에 dotori값 안들어가서..)
+		Member findMember = memberRepository.findMemberById(member.getMember_id());
 		
-		return new PrincipalDetails(member, oAuthUser.getAttributes());
+		return new PrincipalDetails(findMember, oAuthUser.getAttributes());
 	}
 }

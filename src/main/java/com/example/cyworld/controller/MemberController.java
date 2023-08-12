@@ -1,5 +1,6 @@
 package com.example.cyworld.controller;
 
+import com.example.cyworld.config.PrincipalDetails;
 import com.example.cyworld.config.UserInfo;
 import com.example.cyworld.model.member.JoinMemberForm;
 import com.example.cyworld.model.member.LoginForm;
@@ -10,7 +11,10 @@ import com.example.cyworld.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -144,5 +148,27 @@ public class MemberController {
 
         return "redirect:/";
     }
-
+    
+    @PostMapping("plusDotori")
+    public ResponseEntity<Long> plusDotori(
+    		@RequestParam Long num
+    		,HttpServletRequest request) {
+    	//현재 로그인한 정보 꺼내오는 방법
+    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        
+    	String memberId=principalDetails.getMember().getMember_id();
+    	Member member= memberService.findMemberById(memberId);
+    	
+    	Long dotori = member.getDotori()+num;
+    	member.setDotori(dotori);
+    	
+    	memberService.updateMember(member);
+    	
+    	//현재 내 도토리 숫자 갱신을 위해
+    	principalDetails.getMember().setDotori(dotori);;
+    	
+	    return ResponseEntity.ok(num);
+    }
+  
 }
