@@ -32,5 +32,12 @@ public class HomeController {
     	return "admin/index";
     }
     
-   
+    @GetMapping("lee")
+    public String lee(Model model) {
+        return "lee/lee";
+    }
+    @GetMapping("dotori")
+    public String dotori(Model model) {
+        return "lee/dotori";
+    }
 }

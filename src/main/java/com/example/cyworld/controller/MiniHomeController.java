@@ -80,7 +80,10 @@ public class MiniHomeController {
     	return "redirect:/miniHome/myhomp";
     }
     
-    
+    @GetMapping("album")
+    public String album(Model model) {
+        return "minihomP/minihomP_album";
+    }
     
     @GetMapping("upload")
     public String miniHome(Model model) {
@@ -94,25 +97,11 @@ public class MiniHomeController {
               BindingResult result,
             @RequestParam(name = "photo", required = false) MultipartFile file
             ){
-
-        // 파라미터로 받은 BoardWriteForm 객체를 Board 타입으로 변환한다.
         Post post = PhotoUpdateForm.toPost(photoUpdateForm);
-        
-        log.info("post:{}",post);
         // board 객체를 저장한다.
-        
         postService.saveReview(post, file);
-
-        // board/list 로 리다이렉트한다.
         return "redirect:/";
     }
-    @GetMapping("lee")
-    public String lee(Model model) {
-        return "lee/lee";
-    }
-    @GetMapping("dotori")
-    public String dotori(Model model) {
-        return "lee/dotori";
-    }
+   
 
 }
