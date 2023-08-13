@@ -1,5 +1,9 @@
 package com.example.cyworld.model.member;
 
+
+
+import java.io.Serializable;
+
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +21,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class Member {
+public class Member implements Serializable {
 	@NonNull
     private String member_id;
 	@NonNull

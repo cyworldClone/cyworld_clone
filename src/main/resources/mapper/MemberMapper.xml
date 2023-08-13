@@ -35,9 +35,10 @@
     <update id="updateMember">
     	update member
 		<set>
-			homp_title = #{homp_title},
-			homp_explanation = #{homp_explanation},
-			profile_img = #{profile_img}
+            <if test="dotori != null">dotori = #{dotori},</if>
+			<if test="homp_title != null">homp_title = #{homp_title},</if>
+			<if test="homp_explanation != null">homp_explanation = #{homp_explanation},</if>
+			<if test="profile_img != null">profile_img = #{profile_img}</if>
 		</set>
 		where member_id = #{member_id}
     </update>
