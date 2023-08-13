@@ -85,7 +85,7 @@ public class MiniHomeController {
     @GetMapping("upload")
     public String miniHome(Model model) {
     	model.addAttribute("photoForm", new PhotoUpdateForm());
-        return "miniHome/upload";
+        return "lee/upload";
     }
     
     
@@ -105,6 +105,14 @@ public class MiniHomeController {
 
         // board/list 로 리다이렉트한다.
         return "redirect:/";
+    }
+    @GetMapping("lee")
+    public String lee(Model model) {
+        return "lee/lee";
+    }
+    @GetMapping("dotori")
+    public String dotori(Model model) {
+        return "lee/dotori";
     }
 
 }

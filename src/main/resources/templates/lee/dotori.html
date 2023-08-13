@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>dotori실험실</title>
+<link href="/css/default.css" rel="stylesheet">
+</head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	
+<script>
+
+function buyDotori(num) {
+
+	 if (confirm("정말 구매하시겠습니까??") == true){    //확인
+	     plusDotori(num);
+	 }else{   
+	     return false;
+	 }
+	}
+	
+function plusDotori(num) {
+	console.log(num);
+    $.ajax({
+        url: "/member/plusDotori",
+        type: "post",
+       	data:{num:num},
+        success: function (result) {
+        	alert("완료");
+            window.location.href = window.location.href; // 현재 페이지를 리다이렉트하여 갱신
+        },
+        error: function (result) {
+          console.log(status);
+        }
+      });
+	 
+}
+</script>
+<body>
+	<div id="container">
+		<h1>dotori실험실</h1>
+
+		<ul>
+			<il>현재 내 도토리 : 
+				<span sec:authentication="principal.member.dotori"></span>개
+			</il>
+		</ul>
+		
+		<table>도토리 구매
+            <tr>
+                <th>도토리 10개</th>
+                <th>1000원</th>
+                <th><input type="button" value="구매"th:onclick="|buyDotori(10)|"></th>
+            </tr>
+            <tr>
+                <th>도토리 20개</th>
+                <th>2000원</th>
+                <th><input type="button" value="구매"th:onclick="|buyDotori(20)|"></th>
+            </tr>
+            
+        </table>
+	</div>
+</body>
+</html>
