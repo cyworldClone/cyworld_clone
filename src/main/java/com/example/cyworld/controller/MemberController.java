@@ -153,15 +153,13 @@ public class MemberController {
     
     @PostMapping("plusDotori")
     public ResponseEntity<Long> plusDotori(
-    		@RequestParam Long num
+    		@AuthenticationPrincipal PrincipalDetails userInfo
+    		,@RequestParam Long num
     		,HttpServletRequest request) {
-    	//현재 로그인한 정보 꺼내오는 방법
-    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-    	
-    	Long dotori = principalDetails.getMember().getDotori()+num;
-    	principalDetails.getMember().setDotori(dotori);
-    	memberService.updateMember(principalDetails);
+
+    	Long dotori = userInfo.getMember().getDotori()+num;
+    	userInfo.getMember().setDotori(dotori);
+    	memberService.updateMember(userInfo);
     	
 	    return ResponseEntity.ok(num);
     }
